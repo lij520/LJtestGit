@@ -1,0 +1,47 @@
+//步骤条steps 内容
+.steps-content {
+  margin-top: 16px;
+  border: 1px dashed #e9e9e9;
+  border-radius: 6px;
+  background-color: #fafafa;
+  min-height: 200px;
+  //text-align: center;
+  padding-top: 20px;
+}
+//步骤条steps 按钮
+.steps-action {
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.steps-third-tip {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center; 
+}
+
+.li-style{
+  float:left;
+  margin-left:40px;
+  list-style:none;
+}
+.control-label{
+  margin-left: 20px;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: boder;
+}
+.control-option{
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: boder;
+}
+.all-checked{
+  width: 16px;
+  height: 16px;
+}
+
+.isread-a a:hover{
+  text-decoration: underline;
+}

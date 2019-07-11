@@ -1,0 +1,49 @@
+.navbar__logo{
+    float: left;
+    width: 70px;
+    overflow: hidden;
+    display: table-cell;
+    margin-left: 20px;
+  
+}
+.navbar__brand{
+    vertical-align: middle;
+    margin: 0;
+    line-height: 50px;
+    // font-family:Sans-serif;
+    font-family:inherit;
+    font-size: 25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color:rgb(153,153,153);
+    // margin-left:110px;
+    margin-left:60px;
+}
+
+.navbar__body{
+    position: relative;
+    // margin-left: 90px;
+    font-weight: 600;
+}
+
+.navbar__image{
+    background-image: url('./header.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.header_menu{
+    background-image: url('./shape.png');
+    background-repeat: no-repeat;
+    background-size: 100% 96%;
+    min-height: 40px;
+    text-align: center;
+    font-size: 19px;
+    color: rgb(255,77,4);
+
+    .ant-row > div {
+        background: transparent;
+        border: 0;
+      }
+}
+

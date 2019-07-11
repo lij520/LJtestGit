@@ -1,0 +1,29 @@
+.card_title_background{
+    background-image: linear-gradient(to bottom,#ffffff,rgb(226, 224, 224));
+  }
+  .card_title_text{
+    height:40px;
+    color:white;
+    background-image: linear-gradient(to bottom,rgb(247,180,53),rgb(254,166,59));
+    display:table-cell;
+    vertical-align:middle; 
+    box-shadow:3px 0px 10px  #c7c7c7;
+    padding: 5px;
+  }
+  .save_title{
+    color: #ffffff;
+    width: 160px;
+    height: 0;
+    border-width: 0px 20px 40px 0px;
+    border-style: dotted dotted solid dotted;
+    border-color: transparent transparent rgb(255,77,4) transparent;
+    margin-left: -10PX;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    font-size: 20px;
+  }
+  .content_subtitle{
+    font-family: Times, TimesNR, 'New Century Schoolbook', Georgia;
+    font-size: 1rem;
+    color: #ef7330;
+  }

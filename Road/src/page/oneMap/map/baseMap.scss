@@ -1,0 +1,189 @@
+$main-color:#4d77b5;
+$themecolor:rgba(255,77,4,0.8);
+
+#basemap{
+    // height:95%;
+    height: calc(100% - 90px);
+    // width:100%;
+    width: calc(100% - 220px);
+    z-index: 1;
+    position: absolute;
+    
+  }
+
+#mapWithNav{
+  height:100%;
+  width:100%;
+  margin-top: -13px;
+  //margin-left: -20px;
+  // position: relative;
+}
+
+.ol-control button{
+  background: rgba(246,112,42,0.8);
+}
+/* // #nav{
+//   height:100%;
+//   width:40%;
+//   float:left;
+// } */
+
+#popup-content{
+  position: relative;
+  background-color:fade-out(white,.2);
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+  padding: 8px;
+  /*border-radius: 10px;*/
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* border: 1px solid #cccccc; */
+  /* bottom: 12px;
+  left: -50px; */
+  min-width: 250px;
+  color:black;
+  
+}
+
+#popup-title{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  background-color:fade-out($themecolor,.2);
+  -webkit-filter: drop-shadow(0 1px 4px fade-out($themecolor,.8));
+  filter: drop-shadow(0 1px 4px fade-out($themecolor,.8));
+  padding: 0px;
+  border:solid 1px fade-out($themecolor,.2);
+  /* bottom: 12px;
+  left: -50px; */
+  min-width: 250px;
+  text-align: center;
+  height:30px;
+  h3{
+    color:white;
+    line-height: 30px;
+  }
+}
+#startPoint, #endPoint{
+  border-color: fade-out($main-color,.2);
+  color:white;
+  border-radius: 5px;
+  position: relative;
+  background-color:fade-out($main-color,.2);
+  -webkit-filter: drop-shadow(0 1px 4px fade-out($main-color,.8));
+  filter: drop-shadow(0 1px 4px fade-out($main-color,.8));
+  padding:3px;
+}
+#startPoint:after,#endPoint:after{
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  position: absolute;
+  pointer-events: none;
+  border-top-color: fade-out($main-color,.2);
+  border-width: 7px;
+  margin-left: -7px;
+  }
+  
+
+h2{
+  color:$main-color;
+}
+
+#navButton{
+  z-index: 9;
+  margin-top:1%;
+  position: absolute;
+  transition:right linear .2s;
+  -moz-transition: right linear .2s; /* Firefox 4 */
+  -webkit-transition: right linear .2s; /* Safari 和 Chrome */
+  -o-transition: right linear .2s;
+}
+
+#popup-closer{
+  color:white;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.olScaleLine{
+  background: rgba(246,112,42,0.8);
+  border-radius: 4px;
+  bottom: 8px;
+  left: 8px;
+  padding: 2px;
+  position: absolute;
+  left:2.475em;
+}
+.olScaleLine-inner{
+  border: 1px solid #eee;
+    border-top: none;
+    color: #eee;
+    font-size: 10px;
+    text-align: center;
+    margin: 1px;
+    will-change: contents, width;
+}
+
+.ol-scale-line{
+  background: rgba(246,112,42,0.8);
+}
+
+
+//测量样式
+#orignalOP {
+  line-height:25px;
+  position:absolute;
+  // top:7rem;
+  // left:1.2rem;
+  z-index: 1520;
+  float:left;
+  margin-left:1rem;
+  margin-top:3px;
+  left:calc(220px + 5em + 148px)
+}
+
+/**
+* 提示框的样式信息
+*/
+.tooltip {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: rgb(14, 245, 26);
+  padding: 4px 8px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.tooltip-measure {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.tooltip-static {
+  background-color: rgba(255,77,4,0.8);
+  color: black;
+  border: 1px solid rgba(255,77,4,0.8);
+}
+
+.tooltip-measure:before,
+.tooltip-static:before {
+  border-top: 6px solid rgba(0, 0, 0, 0.5);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  margin-left: -7px;
+  left: 50%;
+}
+
+.tooltip-static:before {
+  border-top-color: rgba(255,77,4,0.8);
+  /* color:rgba(255, 255, 255, 0.2); */
+}   
+
+

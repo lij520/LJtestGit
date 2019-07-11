@@ -1,0 +1,129 @@
+.home_style{
+    margin-top: -20px;
+    height: 40px;
+    margin-bottom: 15px;
+    background-image: url('./img/梯形.png');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+.home_charts_text{
+    color:rgb(255,77,4);
+    vertical-align: middle;
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 18px
+}
+
+.home_charts{
+    box-shadow: -1px 1px 10px #e8e8e8;
+    padding-top: 10px;
+    background-color: white;
+}
+
+.home_notify{
+       background-color: white;
+       box-shadow: 1px 1px 5px #e8e8e8;
+       padding-bottom: 20px;
+       margin-top: 20px;
+}
+
+
+.protectchart_title_box{
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 1px 1px 5px #e8e8e8;
+}
+
+.protectchart_title_left{
+    height: 9.9vw;
+    display: flex;
+}
+
+.protectchart_title_row div:nth-child(1) .protectchart_title_left{ 
+    background:linear-gradient(to right, rgb(27,228,177) 0%,rgb(4,187,221) 100%);
+}
+
+.protectchart_title_row div:nth-child(2) .protectchart_title_left{
+    background:linear-gradient(to right, rgb(234,181,159) 0%,rgb(222,115,191) 100%);
+}
+.protectchart_title_row div:nth-child(3) .protectchart_title_left{
+    background:linear-gradient(to right, rgb(118,213,10) 0%,rgb(171,213,10) 100%);
+}
+.protectchart_title_row div:nth-child(4) .protectchart_title_left{
+    background:linear-gradient(to right, rgb(246,112,42) 0%,rgb(247,180,53) 100%);
+}
+
+.protectchart_title_left_text{
+    width: 20px;
+    font-size: 18px;
+    margin: auto;
+    color: white;
+}
+
+.protectchart_title_right_top{
+    height: 6vw;
+    display: flex;
+}
+
+.protectchart_title_right_total{
+    height: 3vw;
+    font-size: 16px;
+}
+
+.protectchart_title_right_text{
+    margin: auto;
+    font-size: 20px;
+    color: rgb(226,76,0);
+    font-weight: bold;
+}
+
+.rotectchart_date_box{
+    height: 4.9vw;
+    background: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top-left-radius: 6px;
+    box-shadow: 1px 1px 3px #e8e8e8;
+    border-top-right-radius: 6px;
+    display: flex;
+}
+
+.rotectchart_date{
+    display: inline-block;
+    width: 300px;
+}
+
+.rotectchart_chart{
+    /* height: 655px; */
+    /* padding: 20px 15px; */
+    background: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 1px 1px 10px #e8e8e8;
+}
+
+.rotectchart_chart_text{
+    height:13%;
+    font-size:16px;
+    color: #ff4d04;
+}
+
+.rotectchart_chart_text span{
+    vertical-align: middle;
+}
+
+.rotectchart_chart_text span:nth-child(2){
+    margin-left: 5px;
+}
+.rotectchart_chart_text span:nth-child(3){
+    margin-left: 10px;
+}
+.rotectchart_chart_text span:nth-child(4){
+    margin-left: 10px;
+}
+.rotectchart_chart_text span:nth-child(5){
+    float: right;
+    line-height: 39px;
+}
