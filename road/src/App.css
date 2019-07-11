@@ -1,0 +1,243 @@
+
+.App {
+ 
+  background-color:rgb(7, 20, 52);
+  min-height: 100vh;
+}
+
+.App-header {
+  text-align: center;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:2vw;
+  /* 35px */
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  /* font-family: 'Comic Sans MS', cursive; */
+}
+
+.App-header-image-left{
+  width: 32%;
+  margin-right:2.6vw;
+}
+
+.App-header-image-right{
+  width: 35%;
+  margin-left:2.6vw;
+  transform: rotateY(180deg);
+}
+
+.gutter-example{
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+
+.gutter-example .ant-row > div {
+  background: transparent;
+  border: 0;
+}
+
+.gutter-title{
+    margin-bottom: -0.6vw;
+    color: white;
+    font-size: 0.9vw;
+    font-weight: bold;
+    /* 18px */
+}
+.gutter-title-background{
+  /* text-decoration: underline  rgb(17, 215, 255); */
+  /* border-bottom: 2px solid  rgb(17, 215, 255); */
+  background-image: url('./image/gutterTitle.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 1vw;
+}
+
+.gutter-charts {
+  min-height: 14vw;
+  padding: 5px 0;
+  margin-bottom: 0.78vw;
+}
+
+.gutter-statics{
+  margin-bottom: 1.3vw;
+}
+
+.gutter-statics .ant-row > div {
+  border: 0;
+  margin-top:8px;
+}
+
+.gutter-statics-title{
+  color: white;
+  font-size:1.3vw;  
+  font-weight: bold;
+  /* font-family: 'Comic Sans MS', cursive; */
+  /* 20px */
+}
+
+
+
+
+.gutter-statics-box{
+  min-height:9vw;
+  width: 100%;
+  /* border: 2px solid rgb(17, 215, 255); */
+  /* border-left-color: transparent; */
+  padding: 5px 0;
+  display: flex;
+  box-shadow:0px 0px 5px rgba(255,255,255,0.7);
+  border-radius: 8px;
+  background-image: url('./image/gutterStatics.png');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.gutter-statics-box-row{
+  line-height: 3.64vw;
+}
+
+
+/* .gutter-statics-box:before {
+  content: "";
+  width: 1em;
+  height: 2em;
+  position: absolute;
+  top: 1.5em;
+  border-radius:0 1em 1em 0;
+  border: 2px solid rgb(17, 215, 255);
+  border-left: 2px solid transparent;
+  box-shadow:0px 0px 7px rgba(255,255,255,0.7);
+}
+
+.gutter-statics-row  div text{
+  display: block;
+  position: absolute;
+  top: -2.5em;
+  left:0;
+}
+
+.gutter-statics-row div text:before {
+  content: "";
+  position: absolute;
+  top: 9vw;
+  left: 5vw;
+  width: 1.5em;
+  height: 2.5em;
+  border-radius: 3.6em 3.6em 0 0;
+  border: 2px solid rgb(17, 215, 255);
+  border-bottom: 2px solid transparent;
+  box-shadow:0px 0px 7px rgba(255,255,255,0.7);
+} 
+
+.gutter-statics-row div:nth-child(3) text:before {
+  left: 4.6vw;
+} 
+.gutter-statics-row div:nth-child(4) text:before {
+  left: 4.6vw;
+} */
+
+.gutter-statics-box-center{
+  width: 100%;
+   margin: auto;
+}
+
+.gutter-statics-box-text{
+  /* 文字外发光(水平阴影，垂直阴影，模糊距离) */
+  font-size: 3.5vw;
+  /* font-weight: bold; */
+  color: rgb(30,231,247);
+  text-shadow:0px 0px 5px rgba(255,255,255,0.7);
+  font-family: 'squarefontregular';
+}
+/* .gutter-statics-box-text:before{
+  content:"16";
+  text-shadow:0px 0px 12px rgba(255,255,255,0.7);
+   position:absolute; 
+   left:0px; 
+   color:rgba(0,0,0,0);
+} */
+
+.gutter-statics-box-number{
+  color: rgb(244,67,54);
+  font-weight:bold;
+  line-height:1.8vw;
+  font-size: 0.73vw;
+}
+
+.gutter-statics-box-number-down{
+  color: rgb(0,191,165);
+}
+
+.gutter-map{
+  /* background: #00A0E9; */
+  height: 68vh;
+  margin-top: 10px;
+}
+
+.areaThing-thead{
+  color:white;
+  font-size:0.573vw;
+  /* 11px */
+}
+
+/* .areaThing-thead:hover{
+  color: rgba(17, 215,255,0.3);
+} */
+
+.gutter-patrol{
+  border: 0;
+  min-height: 23vh;
+  width: 100%;
+  display: flex;
+}
+
+.gutter-patrol-block{
+  margin: auto;
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+.gutter-patrol-item{
+  width: 100%;
+  background-color: rgba(255, 255, 255,0.1);
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+
+.patrol-person-rate{
+  display: inline;
+}
+
+.patrol-person-text{
+  color:rgb(17, 215, 255);
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.7);
+  font-size: 0.83vw;
+  /* 16px */
+  vertical-align: top;
+}
+
+.patrol-week-up{
+  color: rgb(244,67,54);
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.7);
+  font-size: 0.83vw;
+   /* 16px */
+}
+
+.patrol-week-down{
+  color:rgb(0, 268,0);
+  font-weight: bold;
+  text-shadow: 0px 0px 10px rgba(255,255,255,0.7);
+  font-size:0.83vw;
+   /* 16px */
+}
+
+
+
