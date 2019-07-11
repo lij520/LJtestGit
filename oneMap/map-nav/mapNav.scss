@@ -1,0 +1,43 @@
+#MapNav{
+    height:95%;
+    width:20.4%;
+    margin:0px;
+    padding:0px;
+    z-index: 10;
+    position: absolute;
+    /* right:0px;  */
+    transition:right linear .2s;
+    -moz-transition: right linear .2s; /* Firefox 4 */
+    -webkit-transition: right linear .2s; /* Safari 和 Chrome */
+    -o-transition: right linear .2s;
+    
+    /* border:solid 1px red */
+}
+
+#buttonDiv{
+    text-align: center;
+    height:100%;
+    float:right;
+    /* //vertical-align: middle; */
+}
+
+#navBar{
+    height:100%;
+    width:100%;
+    float:right;
+    text-align: left;
+    background: white;
+    padding:8% 8% 8% 8%;
+    overflow:scroll;
+    transition:right linear .2s;
+    -moz-transition: right linear .2s; /* Firefox 4 */
+    -webkit-transition: right linear .2s; /* Safari 和 Chrome */
+    -o-transition: right linear .2s;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));  
+}
+
+
+
+
+
