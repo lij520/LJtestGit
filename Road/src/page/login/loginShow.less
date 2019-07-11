@@ -1,0 +1,78 @@
+.login-card{
+    .ant-input-affix-wrapper .ant-input:not(:first-child){
+        padding-left:60px;
+    }
+
+    .ant-input{
+        height:70px;
+        border-radius: 5px;
+    }
+
+    .ant-input-affix-wrapper .ant-input-prefix{
+        left:20px;
+    }
+
+    .ant-checkbox-checked .ant-checkbox-inner::after{
+        border-color:#1890ff;
+    }
+
+    .ant-checkbox-checked .ant-checkbox-inner{
+        background: none;
+        border-radius: 2px;
+    }
+
+    .ant-checkbox + span{
+        color:#B3B3B3;
+    }
+
+    .ant-btn-primary{
+        background:linear-gradient(to right, #FF931E,#FEC438);
+        border:none;
+        font-size:35px;
+        height:70px;
+        font-family: 'SimHei';
+        border-radius: 5px;
+    }
+
+    a{
+        color:#B3B3B3;
+    }
+
+    a:hover,a:focus,a:active{
+        color:#1890ff;
+    }
+}
+
+
+@media screen and (max-device-height:1200px){
+    .login-card{
+        .ant-btn-primary{
+            font-size:35px;
+        }
+
+        .ant-input{
+            height: 70px;
+        }
+
+        .ant-btn-primary{
+            height:70px;
+        }
+    }
+    
+}
+
+@media screen and (max-device-height:1000px){
+  .login-card{
+    .ant-btn-primary{
+        font-size:20px;
+    }
+    .ant-input{
+        height:40px;
+    }
+
+    .ant-btn-primary{
+        height:40px;
+    }
+  }
+  
+}
