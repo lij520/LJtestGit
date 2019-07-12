@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片预加载之无序加载--QQ表情包</title>
+    <style>
+        body,p,ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            background-color: #eee;
+        }
+        a{
+            text-decoration: none;
+            outline: none;
+        }
+        li{
+            list-style-type: none;
+        }
+        .box{
+            margin: 150px 0 0 200px;
+        }
+        #face-btn{
+            height: 40px;
+            display: block;
+            background: url(face/QQ/face.png) no-repeat 0 4px;
+            text-indent: 40px;
+            color: #333;
+        }
+
+        #face-btn:hover{
+            background-position: 0 -26px;
+            /* background-color: rgb(212, 36, 36); */
+        }
+
+        .loading{
+            width: 390px;
+            padding: 2px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .panel{
+            width: 390px;
+            background-color: #fff;
+        }
+        .list{
+            width: 390px;
+        }
+        .list li{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #fff;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .list li:hover{
+            border-color:#06c;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <a href="javascript:;" id="face-btn">表情</a>
+        <div class="panel">
+            <p class="loading">表情加载中，请稍后.....</p>
+        </div>
+    </div>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/preload.js"></script>
+    <script>
+        var $btn=$('#face-btn');
+        var $panel=$('.panel');
+        var imgs=[]
+
+        for(var i=0;i<75;i++){
+            imgs[i] = 'face/QQ/'+(i+1)+'.gif'
+        }
+
+        var len=imgs.length;
+        $btn.on('click',function(e){
+            e.stopPropagation();  //禁止冒泡
+
+            $panel.show();
+
+            $.preLoad(imgs,{
+                all: function(){
+                    var html='';
+                    html+='<ul class="list">';
+                    for(var i=0;i<len;i++){
+                        html+='<li><img src="'+imgs[i]+ '" alt=""></li>';
+                    }
+
+                    html +='</ul>';
+
+                    setTimeout(function(){
+                        $panel.html(html);
+                    },1000)
+                    
+                }
+            })
+        });
+
+        //点击空白处面板收起
+        $(document).on('click',function(){
+            $panel.hide();
+        }) 
+    </script>
+</body>
+</html>

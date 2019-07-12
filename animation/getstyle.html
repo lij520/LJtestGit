@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>getstyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	body,div{
+		margin:0;
+		padding:0;
+	}
+	#div1{
+		width:200px;
+		height:200px;
+		background:red;
+		border:4px solid black;
+	}
+	</style>
+	<script>
+		window.onload = function(){
+			startMove();
+		}
+		var timer=null;
+		function startMove(){
+			clearInterval(timer);
+			timer=setInterval(function(){
+				var oDiv = document.getElementById('div1');
+				var icur=getStyle(oDiv,'width')
+				if(icur===0){
+					clearInterval(timer);
+				}else{
+					oDiv.style.width = parseInt(getStyle(oDiv,'width'))-10+'px';
+					console.log(oDiv.style.width);
+				}
+			},30)
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="div1"></div>
+</body>

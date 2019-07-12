@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片预加载之有序加载</title>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        .box{
+            text-align: center;
+        }
+        .btn{
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 0 10px;
+            margin-right: 50px;
+            color: #333;
+        }
+        .btn:hover{
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="../icon/test.jpg" alt="pic" id="img" width="500" />
+        <p>
+            <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+            <a href="javascript:;" class="btn" data-control="next">下一页</a>
+        </p>
+    </div>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/preload.js"></script>
+    
+    <script>
+        var imgs=[
+            '../icon/test.jpg',
+			'../icon/test1.jpg',
+			'../icon/test2.jpg',
+			'../icon/test3.jpg',
+			'../icon/test4.jpg',
+			'../icon/test5.jpg',
+			'../icon/ee.jpg'       //本地图片
+        //   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146578&di=8eca1737549b689c55a949af03aebf03&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw6%2F53%2Fd%2F85.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146576&di=505175476ecfeaaece7365fd8ed66525&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw15%2F48%2Fd%2F23.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146574&di=37f3878a8653cff8e669610e4b422e5e&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Flvpics%2Fh%3D800%2Fsign%3Ddace5628d400baa1a52c4abb7712b9b1%2F024f78f0f736afc33cc2a4a1b619ebc4b6451223.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146573&di=72797b2f3f3117a7a9e14b16e6de3db4&imgtype=0&src=http%3A%2F%2Fimg3.xiazaizhijia.com%2Fwalls%2F20150207%2F1440x900_a6c9ec49d95177c.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146571&di=8c531c45839fa2ba4a6452bbc9c88696&imgtype=0&src=http%3A%2F%2Fpic41.nipic.com%2F20140601%2F18681759_143805185000_2.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146571&di=cc2ae4fb8e841e14da68a8195ba54a80&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F11%2F70%2F16pic_1170466_b.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146569&di=8868796b9e46078c281a5df2cf9d92e6&imgtype=0&src=http%3A%2F%2Fpic30.nipic.com%2F20130605%2F12949204_213054651194_2.jpg'
+		];
+
+        //#region
+        // //有序预加载
+        // var len=imgs.length,count=0,index = 0;
+        // function load(){
+        //     var imgObj = new Image();
+        //     $(imgObj).on('load error',function(){
+        //         if(count>=len){  //所有图片加载完成
+
+        //         }else{
+        //             load();
+        //         }
+        //         count++;
+        //     });
+
+        //     imgObj.src= imgs[count];
+        // }
+
+        // $('.btn').on('click',function(){
+		// 	if('prev' === $(this).data('control')){
+		// 		index = Math.max(0,--index);
+		// 	}else{
+		// 		index = Math.min(len-1,++index);
+		// 	}
+		// 	document.title=(index+1)+'/'+len;
+		// 	$('#img').attr('src',imgs[index]);
+        // })
+        
+        // var imgs=[
+        //     'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146578&di=8eca1737549b689c55a949af03aebf03&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw6%2F53%2Fd%2F85.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146576&di=505175476ecfeaaece7365fd8ed66525&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fw15%2F48%2Fd%2F23.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146574&di=37f3878a8653cff8e669610e4b422e5e&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Flvpics%2Fh%3D800%2Fsign%3Ddace5628d400baa1a52c4abb7712b9b1%2F024f78f0f736afc33cc2a4a1b619ebc4b6451223.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146573&di=72797b2f3f3117a7a9e14b16e6de3db4&imgtype=0&src=http%3A%2F%2Fimg3.xiazaizhijia.com%2Fwalls%2F20150207%2F1440x900_a6c9ec49d95177c.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146571&di=8c531c45839fa2ba4a6452bbc9c88696&imgtype=0&src=http%3A%2F%2Fpic41.nipic.com%2F20140601%2F18681759_143805185000_2.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146571&di=cc2ae4fb8e841e14da68a8195ba54a80&imgtype=0&src=http%3A%2F%2Fpic2.16pic.com%2F00%2F11%2F70%2F16pic_1170466_b.jpg',
+		// 	'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554959146569&di=8868796b9e46078c281a5df2cf9d92e6&imgtype=0&src=http%3A%2F%2Fpic30.nipic.com%2F20130605%2F12949204_213054651194_2.jpg'
+		// ];
+        //#endregion
+
+        var len=imgs.length,index = 0;
+        //有序预加载
+        $.preLoad(imgs,{
+            order:'ordered',  //有序加载
+			// each : function(count){
+			// 	$progress.html(Math.round((count+1)/len*100)+'%');
+			// },
+			// all: function(){
+			// 	$('.loading').hide();
+			// 	document.title = '1/'+len;
+			// }
+		});
+
+        $('.btn').on('click',function(){
+			if('prev' === $(this).data('control')){
+				index = Math.max(0,--index);
+			}else{
+				index = Math.min(len-1,++index);
+			}
+			document.title=(index+1)+'/'+len;
+			$('#img').attr('src',imgs[index]);
+		})
+    </script>
+</body>
+</html>

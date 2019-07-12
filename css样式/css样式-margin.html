@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>Margin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.backg{
+		width: 400px;
+		height: 250px;
+		overflow: hidden;
+		border: 1px solid #333;
+		resize: both;
+		margin: 50px;
+	}
+	.box{
+		/* height: 200px; */
+		background: olive;	
+		overflow: hidden;
+	}
+	.box > div {
+		margin: 50%;
+	}
+	p{
+		line-height: 2em;
+		margin: 1em 0;
+		background: #f0f3f9;
+	}
+	.father{
+		height: 200px;
+		/* margin: 50px; */
+		background: olive;
+		/* overflow: hidden; */
+		/* border: 1px solid #ffffff; */
+		/* margin-top: 20px; */
+		position: relative;
+	}
+	.son{ 
+		/* margin-top: 80px; */
+		/* margin: 1em 0; */
+		/* border: 2px double #333333; */
+		/* padding-top: 1px; */
+		/* height: 1em; */
+		height: 100px;
+		width: 500px;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		background:blue; 
+	}
+	.calss{ 
+		/* background: #ff33ff; */
+		display: block;
+		width: 500px;
+		/* height: 500px; */
+		/* margin: 0 auto; */
+		background: url("../icon/login.png");
+	}
+	.box1{
+		width: 1200px;
+		margin: auto;
+		background: orange;
+	}
+	.ul{
+		overflow: hidden;
+		margin-right: -20px;
+	}
+	.li{
+		width: 386.66px;
+		height: 300px;
+		margin-right: 20px;
+		background: green;
+		float: left; 
+	}
+	 .mes{
+		/* height: 100px; */
+	 } 
+	/* img{
+		height: 300px;
+		margin: 50px 0;
+	} */
+	.box2{
+		overflow: hidden;
+		resize: vertical;
+	}
+	.child-green,.child-orange{
+		margin-bottom: -10000px;
+		padding-bottom: 10000px;
+	}
+	.child-orange{
+		width: 50%;
+		float: left;
+		background: orange;
+		text-align: center;
+		color:#fff;
+	}
+	.child-green{
+		width: 50%;
+		float: left;
+		background: green;
+		text-align: center;
+		color:#fff;
+	}
+	.child-orange p{
+		background: orange;
+	}
+	.child-green p{
+		background: green;
+	}
+	.div{
+		/* resize: both; */
+		/* border:1px solid red; */
+		/* float: left; */
+		width: 100%;
+	}
+	.div p{
+		resize: both;
+	}
+	/* .mess{
+		height: 40px;
+	} */
+</style>
+</head>
+<body>
+	<div class="backg">  <!-- margin重叠--兄弟重叠!-->
+		<div class="box">
+			<div></div>
+		</div>
+		<p>第一行</p>
+		<p>第二行</p>
+	</div>
+	<div class="father">  <!--  margin重叠--父子重叠，居中设置!-->
+		<div class="son">我是son</div>
+	</div>
+	<div class="calss">  <!--  margin重叠--设置图片!-->
+		<img src="icon/login.png" alt="wu">
+	</div>
+	<div class="box1">  <!--  margin重叠--左右均匀设置!-->
+		<div class="ul">
+			<div class="li">list1</div>
+			<div class="li">list2</div>
+			<div class="li">list3</div>
+		</div>
+	</div>
+	<div class="mes">   <!--  margin重叠--图片居中设置!-->
+		<img src="../icon/login.png" alt="">
+	</div>
+	<div class="box2">   <!-- 左右等高设置!-->
+		<div class="child-orange">
+			<p>左黄</p>
+			<p>左黄</p>
+			<p>左黄</p>
+		</div>
+		<div class="child-green">
+			<p>右绿</p>
+			<p>右绿</p>
+		</div>
+	</div>
+	<div class="div">
+		<img src="../icon/login.png" alt="" width="150" style="float: right" >
+		<p style="margin-right: 170px;">所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。所有代码。可以直接复制所有代码到新建的html文件上粘贴保存后运行，即可看到自动适应高度的效果。</p>
+	</div>
+	<div class="mess"></div>
+</body>
+</html>

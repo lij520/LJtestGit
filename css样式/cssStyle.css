@@ -1,0 +1,313 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+/*给所有的图片做透明度处理*/
+figure img{
+	opacity: 0.8;
+	transition: all 0.35s;
+}
+
+/*给所有的文字标签p做动画*/
+figure figcaption p,h2,span,div{
+	transition: all 0.35s;
+}
+
+figure{
+	position: relative;
+	width: 33.33%;
+	overflow: hidden;
+	height: 300px;
+	float: left;
+}
+figcaption{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	color: aliceblue;
+	font-family: "微软雅黑";
+}
+
+/*根据屏幕的大小调整显示图片内容*/
+@media screen and (max-width:600px){
+	figure{
+		width: 100%;
+	}
+}
+@media screen and (min-width:601px) and (max-width:1000px){
+	figure{
+		width: 50%;
+	}
+}
+@media screen and (min-width:1001px){
+	figure{
+		width: 33.33%;
+	}
+}
+
+.fig1{
+	background: #2f0000;
+}
+
+/* 对p标签做延迟动画处理*/
+.fig1 figcaption p:nth-of-type(1){
+	transition-delay:0.05s; 
+}
+.fig1 figcaption p:nth-of-type(2){
+	transition-delay:0.10s; 
+}
+.fig1 figcaption p:nth-of-type(3){
+	transition-delay:0.15s; 
+}
+
+.fig1 figcaption{
+	padding: 20px;
+}
+.fig1 figcaption p{
+	background: #fff;
+	color: #333;
+	margin: 5px;
+	text-align: center;
+	transform: translate(-120px);
+}
+.fig1:hover figcaption p{
+	transform: translate(0px);
+}
+/* 对img标签做平移处理*/
+.fig1:hover img{
+	transform: translate(-50px);
+	opacity: 0.5;
+}
+
+/* 对fig2增加背景色*/
+.fig2{
+	background: #030;
+}
+/* 对fig2的图片增加宽高*/
+.fig2 figcaption{
+	width: 100%;
+	height: 100%;
+}
+/* 对fig2增加方框并增加初始位移和角度*/
+.fig2 figcaption div{
+	width: 80%;
+	height: 80%;
+	border: 2px solid #fff;
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	transform: translate(0px,-350px) rotate(0deg); 
+}
+/* 对fig2的标题文字内容进行设置*/
+.fig2 figcaption h2{
+	margin-top:15%; 
+	margin-left:15%; 
+}
+/* 对fig2的解析释文字内容进行设置*/
+.fig2 figcaption p{
+	margin-left:15%; 
+	transform: translate(0px,50px);
+	opacity: 0;
+}
+/* 当鼠标置于fig2上时增加伪属性并设置位置和旋转角度*/
+.fig2:hover figcaption div{
+	transform: translate(0px,0px) rotate(360deg);
+}
+/* 当鼠标置于fig2上时图片透明度变化*/
+.fig2:hover img{
+	opacity: 0.5;
+	transform: scale(1.2,1.2);
+}
+/* 当鼠标置于fig2上时文字透明度变化*/
+.fig2:hover figcaption p{
+	transform: translate(0px,0px);
+	opacity: 1;
+}
+
+/* fig3样式设置 */
+.fig3{
+	background: rgb(127, 207, 127);
+}
+.fig3 figcaption{
+	position: absolute;
+	top: 30%;
+	left: 15%;
+}
+.fig3:hover img{
+	opacity: 0.5;
+	transform: translate(-50px);
+}
+.fig3 figcaption h2{
+	transform: skew(90deg);
+}
+.fig3 figcaption p{
+	transform: skew(90deg);transition-delay: 0.1s;
+}
+.fig3:hover figcaption h2{
+	transform: skew(0deg);
+}
+.fig3:hover figcaption p{
+	transform: skew(0deg);
+}
+
+/* fig4样式设置 */
+.fig4{
+	background: rgb(40, 43, 40);
+}
+/* 对fig4的图片增加宽高*/
+.fig4 figcaption{
+	width: 100%;
+	height: 100%;
+}
+/* 对fig4增加方框并增加初始位移和角度*/
+.fig4 figcaption div{
+	width: 60%;
+	height: 60%;
+	border: 2px solid #fff;
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	transform: scale(1.5,1.5);
+	opacity: 0;
+}
+
+.fig4 figcaption h2{
+	margin-top: 22%;
+	margin-left: 22%; 
+	transform: scale(1.2,1.2);
+	opacity: 0;
+}
+.fig4 figcaption p{
+	margin-top: 5px;
+	margin-left: 22%; 
+	transform: scale(1.2,1.2);
+	opacity: 0;
+}
+.fig4:hover figcaption div{
+	transform: scale(1,1);
+	opacity: 1;
+}
+.fig4:hover img{
+	opacity: 0.5;
+	transform: scale(1.5,1.5);
+}
+.fig4:hover figcaption h2{
+	transform: scale(1,1);
+	opacity: 1; 
+}
+.fig4:hover figcaption p{
+	transform: scale(1,1); 
+	opacity: 1;
+}
+
+/* fig5样式设置 */
+.fig5 {
+	background: rgb(242, 247, 173);
+}
+.fig5 figcaption{
+	width: 100%;
+	height: 100%;
+}
+.fig5 figcaption div{
+	width: 94%;
+	height: 60%;
+	/* border: 2px solid rgb(242, 247, 173); */
+	position: absolute;
+	left: 0px;
+	top: 300px;
+	background: rgba(234, 238, 234,0.8);
+	opacity: 0;
+}
+.fig5:hover figcaption div{
+	opacity: 1;
+	transform: skew(0,-15deg);
+	transform-origin: 0 0;
+}
+.fig5 figcaption h2{
+	margin-top: 22%;
+	margin-left: 22%; 
+	opacity: 0;
+}
+.fig5:hover figcaption h2{
+	opacity: 1;
+}
+.fig5 figcaption div span{
+	font-size: 16px;
+	color: black;
+	margin-right: 15px;
+	right: 0px;
+}
+.fig5 figcaption div .txt{
+	background: transparent;
+	position: absolute;
+	top: 10%;
+	left: 70%
+}
+.fig5:hover figcaption div .txt{
+	transform: skew(0,15deg);
+}
+
+/* fig6样式设置 */
+.fig6 {
+	background: rgb(225, 226, 214);
+}
+.fig6 figcaption{
+	width: 100%;
+	height: 100%;
+}
+.fig6:hover figcaption div{
+	transition: all 0.5s;
+}
+.fig6 figcaption div:nth-of-type(1){
+	width: 64%;
+	height: 56%;
+	border-style: solid;
+	border-width: 1px 0;
+	border-color: aliceblue transparent aliceblue transparent;
+	position: absolute;
+	top: 21%;
+	left: 19%;
+	opacity: 0;
+	transform: scale(0.5,1);
+}
+.fig6 figcaption div:nth-of-type(2){
+	width: 56%;
+	height: 62%;
+	border-style: solid;
+	border-width: 0 1px;
+	border-color: transparent aliceblue transparent aliceblue;
+	position: absolute;
+	top: 19%;
+	left: 23%;
+	opacity: 0;
+	transform: scale(1,0.5);
+}
+.fig6 figcaption h2{
+	margin-top: 5%;
+	margin-left: 10%; 
+	opacity: 1;
+}
+.fig6 figcaption p{
+	margin-top: 10px;
+	margin-left: 25%; 
+	opacity: 0;
+}
+.fig6:hover figcaption h2{
+	margin-top: 20%;
+	margin-left: 25%; 
+	opacity: 1;
+}
+.fig6:hover figcaption p{ 
+	opacity: 1;
+}
+
+.fig6:hover figcaption div:nth-of-type(1){
+	transform: scale(1,1);
+	opacity: 1;
+}
+.fig6:hover figcaption div:nth-of-type(2){
+	transform: scale(1,1);
+	opacity: 1;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>案例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+	 color: #3C3C3C;
+    -webkit-font-smoothing: antialiased;
+	font: 12px/1.5 tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+	margin: 0;
+    padding: 0;
+}
+#move{
+	padding:20px;
+	width:330px;
+	background-color:#f4f4f4;
+	margin:10px auto;
+	border-top:1px solid #ccc;
+}
+#move a{
+	display:inline-block;
+	width:70px;
+	height:45px;
+	background:yellow;
+	border:1px solid black;
+	border-radius:3px;
+	background-color:#fff;
+	text-align:center;
+	margin:10px 17px;
+	position:relative;
+	padding-top:30px;
+	color:#9c9c9c;
+	font-size:12px;
+	text-decoration:none;
+	line-height:25px;
+	overflow:hidden;
+}
+#move a i{
+	position:absolute;
+	top:15px;
+	left:0;
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	filter:alpha(opacity:100);
+	opacity:1;
+}
+#move a:hover{
+	color:#F00;
+}
+#move img{
+	border:none;
+}
+#move a p{
+	line-height:40px;
+}
+</style>
+<script src='perfectmove.js'></script>
+<script>
+	window.onload=function(){
+		var aLi=document.getElementsByTagName('i');
+		for(var i=0;i<aLi.length;i++){
+			aLi[i].timer=null;
+			aLi[i].onmouseover=function(){
+				startMove(this,{opacity:50,top:5})
+			}
+			aLi[i].onmouseout=function(){
+				startMove(this,{opacity:100,top:15})
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<div id="move" style='position:relative'>
+	<a href="https://wt.taobao.com/?spm=a21bo.2018.201866.1.1a5211d9lIyVCm&ks-menu=cz"><i><img src="../icon/1-icon.png"/></i><p>话费</p></a>
+	<a href="https://damai.tmall.com/shop/view_shop.htm?spm=a21bo.2018.201866.10.1a5211d9lIyVCm"><i><img src="../icon/2-icon.png"/></i><p>演出</p></a>
+	<a href="https://www.fliggy.com/?spm=a21bo.2018.201866.2.1a5211d9lIyVCm"><i><img src="../icon/3-icon.png"/></i><p>旅行</p></a>
+	<a href="https://jiaofei.alipay.com/jiaofei.htm?_pdType=aecfbbfgeabbifdfdieh&_scType=bacfajegafddadijhagd"><i><img src="../icon/4-icon.png"/></i><p>水电煤</p></a>
+	<a href="https://app.alipay.com/container/web/index.htm"><i><img src="../icon/5-icon.png"/></i><p>服务</p></a>
+	<a href="https://btrip.alitrip.com/jiudian/?spm=a21bo.2018.201866.7.1a5211d9lIyVCm"><i><img src="../icon/6-icon.png"/></i><p>酒店</p></a>
+	<a href="https://dianying.taobao.com/?spm=a21bo.2018.201866.6.1a5211d9lIyVCm"><i><img src="../icon/7-icon.png"/></i><p>电影</p></a>
+	<a href="https://game.taobao.com/?spm=a21bo.2018.201866.4.1a5211d9lIyVCm"><i><img src="../icon/8-icon.png"/></i><p>彩票</p></a>
+	<a href="https://baoxian.taobao.com/?spm=a21bo.2018.201866.3.1a5211d9lIyVCm"><i><img src="../icon/9-icon.png"/></i><p>车险</p></a>
+</div>
+</body>
+</html>

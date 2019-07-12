@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>transition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.changes{
+	width:400px;
+	height:400px;
+	background:#000;
+	margin:50px auto;
+}
+.change{
+	display:block;
+	width:400px;
+	height:400px;
+	background:url(../icon/back.png) no-repeat center;
+	background-size:cover;
+	border:1em solid rgba(255,255,255,.8)
+	margin:50px auto;
+}
+.change img{
+	margin:20px 30px;
+	width:300px;
+	height:284px;
+	opacity:0;
+	-webkit-transform:translate(-100px,-100px);
+	transition:opacity 1s ease-in-out ,transform 1s ease-in-out 0.1s;
+}
+.change:hover img{
+	-webkit-transform:translate(0px,0px);
+	opacity:1;
+	transition:opacity 1s ease-in-out 0.5s,transform 1s ease-in-out;
+}
+.spineer{
+	width:40px;
+	height:40px;
+	margin:10px auto;
+	background-color:green;
+	border-radius:100%;
+	-webkit-animation:fadeOut 1.0s infinite ease-in-out;
+	animation:fadeOut 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes fadeOut{
+	from {-webkit-transform:scale(0.0);}
+	to {-webkit-transform:scale(1.0);opacity:0;}
+}
+@keyframes fadeOut{
+	from {transform:scale(0.0);}
+	to {transform:scale(1.0);opacity:0;}
+}
+.cardform{
+	width:300px;
+	height:200px;
+	margin:2rem auto;
+}
+.cardform > img{
+	position:absolute;
+	border:10px solid #fff;
+	box-sizing:border-box;
+	box-shadow:4px 4px 3px rgba(0,0,0,0.2);
+	transform-origin:center 400px;
+	transition:transform 0.7s ease;
+}
+.cardform img:first-child{
+	transform:rotate(5deg);
+}
+.cardform img:last-child{
+	transform:rotate(-5deg);
+}
+.cardform:hover img:first-child{
+	transform:rotate(30deg);
+}
+.cardform:hover img:last-child{
+	transform:rotate(-30deg);
+}
+.lines{
+	width:50px;
+	height:50px;
+	margin:100px auto;
+	text-align:center;
+}
+.lines >div{
+	display:inline-block;
+	width:6px;
+	height:40px;
+	background:green;
+	-webkit-animation:strechdelay 1.2s infinite ease-in-out;
+}
+.lines .line2{
+	-webkit-animation-delay:-1.1s;
+}
+.lines .line3{
+	-webkit-animation-delay:-1.0s;
+}
+.lines .line4{
+	-webkit-animation-delay:-0.9s;
+}
+.lines .line5{
+	-webkit-animation-delay:-0.8s;
+}
+@-webkit-keyframes strechdelay{
+	0%,40%,100%{
+		-webkit-transform:scale(0.4);
+	}
+	20%{
+		-webkit-transform:scale(1);
+	}
+}
+.spinner1{
+	width:10em;
+	height:10em;
+	margin:100px auto;
+	border:1.1em solid rgba(255,255,255,0.2);
+	border-left-color:#fff;
+	border-radius:50%;
+	-webkit-animation:load 1.1s infinite linear;
+}
+@-webkit-keyframes load{
+	from{
+		-webkit-transform:rotate(0deg);
+	}
+	to{
+		-webkit-transform:rotate(360deg);
+	}
+}
+.paper-flip{
+	position:relative;
+	width:500px;
+	height:300px;
+	margin:30px auto;
+}
+.share-layer{
+	position:absolute;
+}
+.image-layer:before{
+	content:'';
+	position:absolute;
+	top:0;
+	right:100px;
+	border-style:solid;
+	border-width:0;
+	border-color:rgba(0,0,0,0.2) #fff;
+	border-radius:0 0 0 4px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.3),-1px 1px 1px rgba(0,0,0,0.2);
+	-webkit-transition:all 0.4s ease-out;
+	transition:all 0.4s ease-out;
+}
+.image-layer:hover:before{
+	border-right-width:80px;
+	border-bottom-width:80px;
+}
+.paper-flip.folded .image-layer:before{
+	border-right-width:400px;
+	border-bottom-width:400px;
+}
+.test{
+	border-top:200px solid green;
+	border-right:200px solid red;
+	border-bottom:200px solid green;
+	border-left:200px solid red;
+	width:0px;
+	height:0px;
+	margin:150px auto; 
+}
+.ol{
+	
+    background: black;
+    width: 400px;
+    height: 200px;
+    margin: 10px auto;
+
+}
+.stage{
+	width:400px;
+	height:400px;
+	margin:100px auto;
+	background:url(../icon/back.png) no-repeat;
+	background-size:cover;
+}
+.rocketship{
+	width:260px;
+	height:260px;
+	background:url(../icon/rockets.png);
+	background-size:cover;
+	transform-origin:80% 80%;
+	-webkit-animation:circle 1s infinite linear;
+}
+
+@-webkit-keyframes circle{
+	to{-webkit-transform:rotate(1turn)}
+}
+.circle{
+	width:200px;
+	height:200px;
+	border-radius:50%;
+	transform-origin:center center;
+	background:rgba(205, 202, 235, 0.5);
+	background-size:cover;
+	-webkit-animation:circles 1.8s infinite linear;
+}
+.shan{
+	width:200px;
+	height:100px;
+	background-size:cover;
+	background:rgba(205, 202, 235, 0.8);
+	transform-origin:300% 50%;
+	transform: skewX(60deg) skewY(-10deg);
+}
+@-webkit-keyframes circles{
+	to{-webkit-transform:rotate(1turn)}
+}
+.butterfly{
+	width:150px;
+	height:142px;
+	transform-origin:center 150%;
+	-webkit-animation:circlew 2s infinite linear;
+}
+.butterfly img{
+	width:100%;
+	height:auto;
+}
+.figure{
+	margin-left:200px;
+	-webkit-animation:updown 1s infinite ease-in-out alternate;
+}
+@-webkit-keyframes updown{
+	to{transform:translateY(200PX)}
+}
+@-webkit-keyframes circlew{
+	to{transform:rotate(-1turn)}
+}
+
+.swatchs{
+	width:120px;
+	height:auto;
+	margin:0 auto;
+	-webkit-transform-origin:center top;
+	-webkit-transform:rotate(-30deg);
+	-webkit-animation:sway 2.2s infinite alternate ease-in-out;
+}
+
+.watch{
+	width:100%;
+	height:auto;
+}
+.seconds{
+	position:absolute;
+	width:8%;
+	height:auto;
+	bottom:11.5%;
+	left:45.5%;
+	-webkit-transform-origin:center 72.4%;
+	-webkit-animation:second 60s infinite linear;
+}
+@-webkit-keyframes second{
+	to{
+		-webkit-transform:rotate(355deg);
+	}
+}
+@-webkit-keyframes sway{
+	to{
+		-webkit-transform:rotate(30deg);
+	}
+}
+</style>
+<script>
+	window.onload=function(){
+		var oDiv=document.getElementById("paper-flip");
+		console.log(oDiv);
+		oDiv.addEventListener("click",function(e){
+			if(e.target.className=="btn-close"){
+				this.className="paper-flip";
+			}else{
+				this.className="paper-flip folded";
+			}
+		})
+	}
+</script>
+</head>
+<body>
+<div class="changes">
+<a href="#" class="change" target="_blank">
+<img src="change.png" alt=""/>
+</a>
+</div>
+<div class="spineer">
+</div>
+<div class="cardform">
+<img src="../icon/change.png" alt="" width="300" height="200"/>
+<img src="../icon/back.png" alt="" width="300" height="200"/>
+<img src="../icon/change.jpg" alt="" width="300" height="200"/>
+</div>
+<div class="lines">
+	<div class="line1"></div>
+	<div class="line2"></div>
+	<div class="line3"></div>
+	<div class="line4"></div>
+	<div class="line5"></div>
+</div>
+<div class="ol">
+<div class="spinner1"></div>
+</div>
+
+<div class="paper-flip" id="paper-flip">
+	<div class="share-layer">
+		<div class="btn-wrap">
+		<a class="btn btn-facebook">faceBook</a>
+		<a class="btn btn-twitter">Twitter</a>
+		<a class="btn btn-geogle">Geogle</a>
+		</div>
+		<span class="btn-close">x</span>
+	</div>
+	
+	<div class="image-layer" id="image-layer">
+		<img src="http://p6.qhimg.com/d/inn/3f563406/table.jpg" alt="" style="
+    width: 400px;height: 400px;"/>
+	</div>
+</div>
+<div class="test"></div>
+<div class="stage">
+	<div class="rocketship"></div>
+</div>
+<div class="circle">
+	<div class="shan"></div>
+</div>
+<div class="stage">
+	<figure>
+		<div class="butterfly">
+			<img src="../icon/rockets.png" alt=""/>
+		</div>
+	</figure>
+</div>
+
+<div class="swatchs">
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/pocketwatch-no-second-hand.png" alt="" class="watch"/>
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/second-hand.png" alt="Pocketwatch second hand" class="seconds"/>
+</div>
+
+</body>
+</html>

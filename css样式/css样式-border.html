@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>Border</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.backg{
+		width: 150px;
+		height: 150px;
+		border: 149px dotted #e0e4e7;
+		/* position: absolute; */
+		/* background: url("icon/login.png") center center no-repeat; */
+		margin: auto;
+		position: relative;
+		z-index: 3;
+	}
+	.juxing{
+		width: 448px;
+		height: 448px;
+		/* border: 1px solid; */
+		margin: auto;
+		color:tomato;
+		position: absolute;
+		top: -149px;
+		left: -149px;
+		background: rgba(235, 184, 163,0.5);
+		z-index: 1;
+		border-radius: 17%;
+	}
+	.triple{
+		width: 120px;
+		height: 20px;
+		padding: 20px 0;
+		border-top: 20px solid red;
+		border-bottom: 20px solid green;
+		background-color: cyan;
+		background-clip: content-box;
+		margin: 20px auto;
+	}
+	.double{
+		width: 120px;
+		height: 20px;
+		border-top: 60px double;
+		border-bottom: 20px solid;
+		margin: 60px auto;
+	}
+	.triangle{
+		width: 0px;
+		height: 0px;
+		border: 40px solid;
+		border-color: red rgb(81, 255, 0) transparent transparent;
+		margin: 50px auto;
+	}
+	.triOne{
+		width: 100px;
+		height: 50px;
+		background: green;
+		margin: 50px auto;
+		/* border: 5px solid blue; */
+		border-radius: 8%;
+		position: relative;
+	}
+	.txt{
+		color: aliceblue;
+		font-family: 'Times New Roman', Times, serif;
+		font-size: 16px;
+		position: absolute;
+		left: 10px;
+		top: 15px;
+	}
+	.triTwo{
+		width: 0px;
+		height: 0px;
+		left: 70px;
+		top: 50px;
+		border-width: 10px 8px;
+		border-style: solid;
+		border-color: green green transparent transparent;
+		margin: 0px auto;
+		position: absolute;
+		padding: 0;
+	}
+	.triOne1{
+		width: 200px;
+		height: 100px;
+		background: blueviolet;
+		margin: 50px auto;
+		/* border: 5px solid blue; */
+		position: relative;
+	}
+	.triTwo1{
+		width: 0px;
+		height: 0px;
+		border-width: 20px 20px;
+		border-style: solid;
+		border-color: transparent blueviolet blueviolet transparent;
+		position: absolute;
+		left: -40px;
+		top: 60px;
+	}
+	.triTwo2{
+		width: 0px;
+		height: 0px;
+		border-width: 10px 20px;
+		border-style: solid;
+		border-color: transparent white white transparent;
+		position: absolute;
+		left: -40px;
+		top: 80px;
+	}
+	.triOne11{
+		width: 200px;
+		height: 100px;
+		margin: 50px auto;
+		border: 5px solid blue;
+		position: relative;
+	}
+	.triTwo11{
+		width: 0px;
+		height: 0px;
+		border-width: 18px 18px;
+		border-style: solid;
+		border-color: blue transparent transparent transparent;
+		position: absolute;
+		top: 105px;
+		left: 80px;
+	}
+	.triTwo21{
+		width: 0px;
+		height: 0px;
+		border-width: 16px 16px;
+		border-style: solid;
+		border-color: white transparent transparent transparent;
+		position: absolute;
+		top: 100px;
+		left: 82px;
+	}
+	.box{
+		border-left: 300px solid rgb(214, 167, 167);
+		float: left;
+		background: rgb(199, 232, 241);
+		margin: 50px auto;
+	}
+	.left{
+		width: 300px;
+		margin-left: -300px;
+		float: left;
+	}
+	.module{
+		font-size: 18px; 
+		font-weight: bold;
+		width: 300px;
+	}
+	.mes{
+		margin: 150px auto;
+	}
+</style>
+</head>
+<body>
+<div class="backg">
+	<div class="juxing"></div>
+</div>
+<div class="triple"></div>
+<div class="double"></div>
+<div class="triangle"></div>
+<div class="triOne">
+	<div class="txt">Hello,World!</div>
+	<div class="triTwo"></div>
+</div>
+<div class="triOne1">
+	<div class="triTwo1"></div>
+	<div class="triTwo2"></div>
+</div>
+<div class="triOne11">
+	<div class="triTwo11"></div>
+	<div class="triTwo21"></div>
+</div>
+<div class="box">
+	<nav class="left">
+		<h3>导航1</h3>
+		<h3>导航1</h3>
+		<h3>导航1</h3>
+	</nav>
+	<section>
+		<div class="module">模块1</div>
+		<div class="module">模块1</div>
+		<div class="module">模块1</div>
+		<div class="module">模块1</div>
+		<div class="module">模块1</div>
+	</section>
+</div>
+<div class="mes"></div>
+</body>
+</html>
