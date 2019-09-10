@@ -1,9 +1,8 @@
-1、dev_onemap:地图开发
+1、ajax-lj:axios+await请求后端接口
 
-2、dev_htmljs:前端css+js+html
+2、funcmap-lj:相关数据表格+地图展示
 
-3、dev_showSystem:大屏展示
+3、onemap:地图展示
 
-4、dev_react:react全站项目
 
-5、dev_roadII:二期项目代码
+

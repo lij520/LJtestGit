@@ -1,0 +1,126 @@
+$main-color:#4d77b5;
+$themecolor:rgba(255,77,4,0.8);
+
+/*设置弹出框样式*/
+.ol-popups {
+    position: absolute;
+    top: 21%;
+    right: 40px;
+    background-color: #FFFFFF;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #fea63b;
+    min-width: 300px;
+    z-index: 400;
+}
+.ol-popups:after, .ol-popups:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.pophead{
+    background-color: #fea63b;
+    height: 30px;
+    margin: -10px -10px 0px -10px;
+    border-radius: 5px 5px 0 0 ;
+}
+#popups-title{
+    position: absolute;
+    top: 5px;
+     color: #000000 ;
+}
+.ol-popups-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    color: #8e908c;
+}
+.ol-popups-closer:after {
+    content: "✖";
+}
+
+.popups-content{
+    .ant-table{
+        line-height: 1.2;
+    }
+    .ant-table-tbody > tr > td{
+        text-align: left;
+        text-indent: 5px;
+    }
+}
+
+//三个button的样式
+.tributton{
+    z-index: 400;
+    position:absolute;
+    margin-top:40px;
+    width:calc(100% - 260px);
+    background:white;
+    padding: 5px 0 5px 0;
+}
+
+//地图样式修改
+.generalMap{
+    .ol-zoom{
+        top:6.5em;
+    }
+    .ol-overviewmap{
+        bottom: 1.7em;
+    }
+    .olScaleLine{
+        bottom: 1.9em;
+    }
+}
+.ungeneralMap{
+    .ol-zoom{
+        top:3.5em;
+    }
+}
+.unpopups{
+    display: none;
+}
+
+#popupS-content{
+    position: relative;
+    background-color:fade-out(white,.2);
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+    padding: 8px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-width: 250px;
+    color:black;
+    
+  }
+  
+  #popupS-title{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    background-color:fade-out($themecolor,.2);
+    -webkit-filter: drop-shadow(0 1px 4px fade-out($themecolor,.8));
+    filter: drop-shadow(0 1px 4px fade-out($themecolor,.8));
+    padding: 0px;
+    border:solid 1px fade-out($themecolor,.2);
+    min-width: 250px;
+    text-align: center;
+    height:30px;
+    h3{
+      color:white;
+      line-height: 30px;
+    }
+  }
+
+  #popupS-closer{
+    color:white;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
