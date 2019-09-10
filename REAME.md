@@ -1,4 +1,4 @@
-本项目是根据B站尚硅谷_React全栈项目：谷粒后台搭建
+
 
 #day01
     ##1、项目开发准备
@@ -10,7 +10,7 @@
         1)使用react脚手架创建项目
         2）开发环境运行：npm start
         3)生产环节打包运行:npm run build  serve build
-
+    
     ##3、git项目管理
         1)创建远程仓库
         2）创建本地仓库
@@ -33,17 +33,17 @@
             git pull origin dev
         7）如果远程修改
             git pull origin dev
-
+    
     ##4、创建项目的基本结构
         api：ajax请求的模块
         component: 非路由组件
         pages：路由组件
         App.js：应用的跟组件
         index.js：入口js
-
+    
     ##5、引入antd
         下载antd的包：按照antd的教程即可
-
+    
     ##6、引入路由
         下载包：react-router-dom
         拆分应用路由：
@@ -53,7 +53,7 @@
         <BrowserRouter/>
         <Switch/>
         <Route path=‘’ component={}/>
-
+    
     ##7、login的静态组件
         1）自定义了一部分样式布局
         2）使用antd的组件实现登陆表单界面
@@ -61,7 +61,7 @@
             Input
             Icon
             Button
-
+    
     ##8、手机表单数据和表单的前台验证
     1)form对象
         如何让包含Form的组件得到form对象？WrapLoginForm = Form.create()(LoginForm)
@@ -89,9 +89,9 @@
                     通过了验证，发送ajax请求
                 }
             })
-
+    
     ##9、高阶函数与高阶组件
-
+    
     1、高阶函数
         1）一类特别的函数
         a、接受函数类型的参数
@@ -103,12 +103,12 @@
         d、函数对象的bind()
         e、Form.create()()/getFieldDecorator()()
     3)高阶函数动态更新、更加具有扩展性
-
+    
     2、高阶组件
         1）本质就是一个函数
         2）接受一个组件（被包装组件），返回一个新的组件（包装组件），包装组件会向被包装组件传入特定属性
         3）作用：扩展组件功能
-
+    
     3、高阶组件与高阶函数的关系
         高阶组件是特别的高阶函数
         接收一个组件函数，返回一个新的组件函数
@@ -276,7 +276,7 @@ day02
         1).配置子路由
         ProductHome/ProductDetail/ProductAddUpdate
         <Route>/<Switch>/<Redirect>
-
+    
         2)匹配路由的逻辑
         默认：逐层匹配 <Route exact path='/product' component={ProductHome} />//为了防止/product/xxx路径在匹配到product后，直接进入到producthome组件，然后再该组件中找xxx路由
         exact属性：完全匹配
@@ -295,7 +295,7 @@ day02
                 响应数据：当前页数据的数组+总记录数（total）[(pages：总页数)]
         3)如何选择？
             根据数据的多少来选择---》数据多--后台分页，数据较少--前台分页
-
+    
     ##4.ProductHome组件
         1）分页显示
             界面：<Card>/<Table>/Select/Icon/Input/Button
@@ -324,7 +324,7 @@ day02
             history.push('/product/detail',{products})
         5）进入添加界面
             history.push('/product/addupdate')
-
+    
     ##5.ProductDetail组件
         1）读取商品数据，this.props.location.state.product
         2）显示商品信息：<Card>/List
@@ -377,7 +377,7 @@ day02
                         table: newValue
                     },()=>this.props.TableValue(this.state.table))//第一种写法：因为setState(arg1,arg2) 括号内的arg1可传入两种参数，
                     //一种是对象，一种是函数. arg2为更改state之后的回调方法,arg2可为空.
-
+    
                     //第二种写法只能传newValue的值，因为setState的值是异步的，setState 之后，this.state 不会立即映射为新的值
                     //this.props.TableValue(newValue)
                 }
@@ -412,7 +412,7 @@ day02
         1)使用基于react的富文本编辑器插件库：react-draft-wysiwyg
         2)参考库的Demo文档编写
         3)如果还有不确定的，百度搜索，指定相对准确的关键字
-
+    
     ##2.完成商品添加与修改功能
         1)收集输入数据
             通过form收集：name/desc/price/pcategotyId/categoryId
