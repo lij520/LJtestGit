@@ -1,0 +1,121 @@
+==================
+       redux
+==================
+
+1、redux是什么？
+    1）redux是一个独立专门用于做状态管理的JS库(不是react插件库);(npm install --save redux)
+    2）可以用在react/angular/vue等项目中，但基本与react配合使用;
+    3）作用：集中式管理react应用中多个组件共享的状态;
+2、redux的工作流程：见图片
+3、使用redux的原则：
+    1）总体原则：能不用就不用，如果不用比较吃力才考虑使用
+    2）某个组件的状态：需要共享
+    3）某个状态需要在任何地方都可以拿到
+    4）一个组件需要改变全局状态
+    5）一个组件需要改变另一个组件的状态
+4、redux的核心API
+    1)createStore():创建包含指定reducer的store对象
+        编码：
+            import {createStore} from 'redux';
+            import counter from './reducers/counter';
+            const store = createStore(counter);   
+    2)store对象:redux库最核心的管理对象，内部维护着state/reducer
+        核心方法：getState()/dispatch(action)/subscribe(listener)
+        编码：store.getState()/store.dispatch({type:'INCREMENT',number})/store.subscribe(render)
+    3)applyMiddleware():应用上基于redux的中间件(插件库)
+        编码:
+            import {createStore,applyMiddleware} from 'redux';
+            import thunk from 'redux';
+            const store = createStore(
+                counter,
+                applyMiddleware(thunk)//应用上异步中间件
+            )
+    4)combineReducers():合并多个reducer函数
+        编码：
+            export default combineReducers({
+                user,
+                charUser,
+            })
+5、redux的三个核心概念
+    (1)action
+        1)标识要执行行为的对象
+        2)包含2个方面的属性
+            a、type:标识属性，值为字符串，唯一，必要属性
+            b、xxx：数据属性，值类型任意，可选属性
+        3)例子：
+            cosnt action = {
+                type : 'INCREMENT',
+                data : 2
+            }
+        4)Action Creator(创建Action的工厂函数)
+            const increment = (number) =>({type:'INCREMENT',data:number})
+    (2)reducers
+        1)根据老的state和action，产生新的state的纯函数
+        2)样树：
+            export default function rdeucer(state=0,action){
+                switch(action.type){
+                    case 'INCREMENT': 
+                        return state + action.data;
+                    case 'DECREMENT':
+                        return state - action.data;
+                    default : 
+                        return state;
+                }
+            }
+        3)注意：
+            a、返回一个新的状态数据
+            b、不要改变原来的状态数据
+    (3)store
+        1)将state、action与reducer联系在一起的对象
+        2)如何得到此对象？
+            import {createStore} from 'redux';
+            import reducer from './reducers/reducer';
+            const store = createStore(reducer);  
+        3)此对象的功能？
+            getState():得到state
+            dispatch(action)：分发action，触发reducer调用，产生新的state
+            subscribe(listener)：注册监听，当产生了新的state时，自动调用
+
+6、存在的问题：
+    1)redux与react组件的代码耦合度太高；
+    2)编码不够简洁
+
+
+
+===========》基于redux存在的问题，故开发出react-redux的react插件库
+
+==================
+    react-redux
+==================
+1、理解：
+    1）react插件库
+    2）专门用来简化react应用中使用redux
+2、react-redux将所有组件分为两大类
+    (1)UI组件
+        a、只负责ui的呈现，不带有任何业务逻辑
+        b、通过props接收数据（一般数据和函数）
+        c、不使用任何redux的API
+        d、一般保存在components文件夹下
+    (2)容器组件 
+        a、负责管理数据和业务逻辑，不负责UI的呈现
+        b、使用redux的API
+        c、一般保存在containers文件夹下
+3、相关API
+    1）Provider
+        //让所有组件都可以得到state数据
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    2)connect
+        //用于包装UI组件生成容器组件
+        connect(
+            mapStateToprops,
+            mapDispatchToProps
+        )(Counter)
+    3)mapStateToprops()
+        //函数：将state数据转换为UI组建的标签属性
+        function mapStateToprops(state){
+            return
+        }
+
+4、redux异步编程：redux-thunk （npm install --save redux-thunk）
