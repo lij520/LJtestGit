@@ -16,6 +16,7 @@ import LinkButton from '../../components/linkButton/index';
 import {reqCategory,reqCategories,reqAddorUpdateProduct} from '../../api/index';
 import PicturesWall from './pictures-wall';
 import RichTextEditor from './richtexteditor';
+import memoryUtils from '../../utils/memoryUtils';
 
 const Item = Form.Item;
 const { TextArea } = Input;
@@ -189,12 +190,18 @@ class ProductAddUpdate extends Component {
 
     componentWillMount(){
         //取出携带的state
-        const product = this.props.location.state;
+        // const product = this.props.location.state;
+        const product = memoryUtils.product;
         console.log('products',product)
         //保存是否更新的标识
-        this.isUpdate = !!product;  //双非是强制转换布尔类型的数据
+        this.isUpdate = !!product._id;  //双非是强制转换布尔类型的数据
         //保存商品(如果没有值则是一个空对象)
         this.product = product || {}; 
+    }
+
+    //在组件卸载之前清除保存数据
+    componentWillUnmount(){
+        memoryUtils.product = {}
     }
 
     render() {

@@ -78,6 +78,9 @@ export const reqDeleteUser=(userId)=>ajax('/manage/user/delete',{userId},'POST')
 
 //添加用户
 export const reqAddUsers=(user)=>ajax('/manage/user/add',user,'POST');
+
+//修改用户
+export const reqUpdateUsers=(user)=>ajax('/manage/user/update',user,'POST');
 /* 
 天气请求的接口文件
 json请求的接口请求函数

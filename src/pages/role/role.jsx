@@ -16,10 +16,11 @@ import { TranFormatDate } from '../../utils/dateUtils';
 import TreeSelect from './treeselect';
 import AddRole from './addrole';
 import memoryUtils from '../../utils/memoryUtils';
+import { connect } from 'react-redux';
 
 
 
-export default class Role extends Component {
+ class Role extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -132,11 +133,11 @@ export default class Role extends Component {
         //需要最新的menus
         const menus = this.selecteAuth.current.getMenus();
         roleSelect.menus = menus;
-        roleSelect.auth_name = memoryUtils.user.username;
+        roleSelect.auth_name = this.props.user.username;
         roleSelect.auth_time = new Date().getTime();
         //请求更新
         const result = await reqUpdateRole(roleSelect);
-        console.log('result232', result);
+        // console.log('result232', result);
         if (result.status === 0) {
             message.success('更新权限成功');
             //更新显示角色列表
@@ -180,7 +181,7 @@ export default class Role extends Component {
             }),
             type: 'radio',  //radio单选，checkbox多选
             selectedRowKeys: [roleSelect._id],  //指定选中项的key值
-            onSelct : (role)=>{
+            onSelect : (role)=>{
                 this.setState({
                     roleSelect: role
                 })
@@ -222,3 +223,8 @@ export default class Role extends Component {
         )
     }
 }
+
+export default connect(
+    state =>({user:state.user}),
+    {}
+)(Role)

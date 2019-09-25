@@ -17,22 +17,34 @@ import Role from '../role/role';
 import Bar from '../charts/bar';
 import Line from '../charts/line';
 import Pie from '../charts/pie';
-
+import ReduxT from '../../02-redux/index';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import NotFound from '../not-found/not-found'
 
 const { Footer, Sider, Content } = Layout;
 
-export default class Admin extends Component{
+class Admin extends Component{
+
+    static propTypes = {
+        user : PropTypes.object.isRequired,
+    }
+
     render(){
 
         /*
         如果可以和后端对接登陆则下面的内容取消注释
         */
-        const user = memoryUtils.user;
+        // const user = memoryUtils.user;
+
+        const user = this.props.user;
+        // console.log('userqwe',user)
         // 如果内存中没有user==》说明当前没有登陆
         if(!user || !user._id){
             //自动跳转到登陆界面
             return <Redirect to='/login/'/>
         }
+        
         return(
             <Layout style={{minHeight:'100%'}}>
                 <Sider>
@@ -42,6 +54,7 @@ export default class Admin extends Component{
                     <Header/>
                     <Content style={{marginTop:'15px',marginLeft:'15px',marginRight:'15px',backgroundColor:'#fff'}}>
                         <Switch>
+                            <Redirect exact={true} from='/' to='/home'/>
                             <Route path='/home' component={Home}/>
                             <Route path='/category' component={Category}/>
                             <Route path='/product' component={Product}/>
@@ -50,7 +63,9 @@ export default class Admin extends Component{
                             <Route path='/charts/bar' component={Bar}/>
                             <Route path='/charts/line' component={Line}/>
                             <Route path='/charts/pie' component={Pie}/>
-                            <Redirect to='/home'/>   
+                            <Route path='/redux' component={ReduxT}/>
+                            <Route  component={NotFound}/> {/*上面没有一个匹配的直接显示 */}
+                            {/* <Redirect to='/home'/>    */}
                         </Switch>
                     </Content>
                     <Footer className='footer'>推荐使用谷歌浏览器，可以获得更加页面操作体验</Footer>
@@ -59,3 +74,8 @@ export default class Admin extends Component{
         )
     }
 }
+
+export default connect(
+    state =>({user:state.user}),
+    {}
+)(Admin)

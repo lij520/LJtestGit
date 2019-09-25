@@ -10,6 +10,9 @@ import logo from '../../assets/images/logo.png';
 import menuList from '../../components/config/menuconfig.jsx';
 
 import { Menu, Icon} from 'antd';
+import {connect} from 'react-redux';
+import {setHeadTitle} from '../../redux/actions';
+
 const { SubMenu } = Menu;
 
 class LeftNav extends Component{
@@ -27,7 +30,7 @@ class LeftNav extends Component{
             */
            if(!item.children){
                 return (
-                    <Menu.Item key={item.key}>
+                    <Menu.Item key={item.key} >
                         <Link to={item.key}>
                             <Icon type={item.icon} />
                             <span>{item.title}</span>
@@ -60,9 +63,16 @@ class LeftNav extends Component{
         return menuList.reduce((pre,item) =>{
             //向pre中添加<Menu.Item>或者<SubMenu/>
             if(!item.children){
+                //判断item是否是当前对应的item
+                if(item.key===path||path.indexOf(item.title)===0){
+                    //更新redux中的headTitle
+                    this.props.setHeadTitle(item.title);
+                }else{
+
+                }
                 pre.push((
                     <Menu.Item key={item.key}>
-                        <Link to={item.key}>
+                        <Link to={item.key} onClick={()=>{this.props.setHeadTitle(item.title)}}>
                             <Icon type={item.icon} />
                             <span>{item.title}</span>
                         </Link>
@@ -145,4 +155,7 @@ withRouter高阶路由组件：
 如果不使用这个路由高阶组件，在leftNav组件中则不存在localtion这个属性
 */
 
-export default withRouter(LeftNav);
+export default connect(
+    state =>({user : state.user}),
+    {setHeadTitle}
+)(withRouter(LeftNav));

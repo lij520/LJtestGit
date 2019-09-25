@@ -11,6 +11,7 @@ import {
 import LinkButton from '../../components/linkButton/index'
 import { reqProducts , reqSearchProducts ,reqUpdateStatus  } from '../../api/index';
 import { PAGE_SIZE } from '../../utils/constants';
+import memoryUtils from '../../utils/memoryUtils'
 /*
 product默认的子路由组件
 */
@@ -69,10 +70,12 @@ export default class ProductHome extends Component {
                 // dataIndex: 'operation',
                 width: '5%',
                 render: (products) => {
-                    return (
+                    return (  //hashRouter不支持携带变量传递，browerRouter则支持，可以用redux或者memoryUtils
                         <span>
-                            <LinkButton onClick={() => this.props.history.push('/product/detail', {products})}>详情</LinkButton>
-                            <LinkButton onClick={()=>this.props.history.push('/product/addupdate',{products})}>修改</LinkButton>
+                            {/* <LinkButton onClick={() => this.props.history.push('/product/detail', {products})}>详情</LinkButton> */}
+                            {/* <LinkButton onClick={()=>this.props.history.push('/product/addupdate',{products})}>修改</LinkButton> */}
+                            <LinkButton onClick={() =>this.showDetail(products)}>详情</LinkButton>
+                            <LinkButton onClick={()=>this.editProduct(products)}>修改</LinkButton>
                         </span>
                     )
                 }
@@ -80,6 +83,17 @@ export default class ProductHome extends Component {
         ];
     }
 
+    showDetail = (products) =>{
+        //缓存products对象，给detail组件使用
+        memoryUtils.product = products;
+        this.props.history.push('/product/detail');
+    }
+
+    editProduct =(products)=>{
+        //缓存products对象，给edit组件使用
+        memoryUtils.product = products;
+        this.props.history.push('/product/addupdate');
+    }
     /*
     获取指定页码的列表数据显示
     */
@@ -168,7 +182,7 @@ export default class ProductHome extends Component {
             </span>
         )
 
-        const extra = (
+        const extra = ( //这里
             <Button type="primary" onClick={()=>this.props.history.push('/product/addupdate')}>
                 <Icon type="plus" />
                 添加商品

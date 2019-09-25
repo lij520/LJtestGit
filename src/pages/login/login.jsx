@@ -1,17 +1,24 @@
 /*
 登陆的路由组件
 */
-import React,{Component} from 'react';
-import {Redirect} from 'react-router-dom';  //Redirect重定向，可直接跳转到指定的路径上去
-import { Form, Icon, Input, Button, Checkbox,message} from 'antd';
-import {reqLogin} from '../../api/index.jsx';
-import memoryUtils from '../../utils/memoryUtils';
-import storageUtils from '../../utils/storageUtils.jsx';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';  //Redirect重定向，可直接跳转到指定的路径上去
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+// import {reqLogin} from '../../api/index.jsx';
+// import memoryUtils from '../../utils/memoryUtils';
+// import storageUtils from '../../utils/storageUtils.jsx';
 import logo from './images/logo.png';
-
+import { connect } from 'react-redux';
+import { login } from '../../redux/actions';
+import PropTypes from 'prop-types';
 import './login.less';
 
-class Login extends Component{
+class Login extends Component {
+
+    static propTypes = {
+        user: PropTypes.object.isRequired,  //获取用户信息
+        login: PropTypes.func.isRequired,  //登陆ajax异步action
+    }
 
     handleSubmit = e => {
         //阻止事件的默认行为
@@ -22,70 +29,80 @@ class Login extends Component{
             if (!err) {
                 // console.log('登陆表单接受的值为：', values);
                 //请求登陆
-                const {username,password}=values;
-                const result = await reqLogin(username,password);
-                console.log('请求成功',result);
-                if(result.status===0){//登陆成功
-                    message.success('登录成功！');
-                    const user = result.data[0];
-                    memoryUtils.user = user;   //保存到内存中去
-                    // console.log('memoryUtils.user',memoryUtils.user);
-                    storageUtils.saveUser(user); //保存到local中
-                    //跳转页面:首页
-                    this.props.history.replace('/');
-                }else{//登陆失败
-                    message.error(result.message);;
-                }
-            }else{
+                const { username, password } = values;
+                //调用分发异步action的函数=》发送登陆的Ajax异步请求，有结果后更新状态
+                this.props.login(username, password);
+
+                ////直接使用异步Ajax请求
+                // const result = await reqLogin(username,password);
+                // console.log('请求成功',result);
+                // if(result.status===0){//登陆成功
+                //     message.success('登录成功！');
+                //     const user = result.data[0];
+                //     memoryUtils.user = user;   //保存到内存中去
+                //     // console.log('memoryUtils.user',memoryUtils.user);
+                //     storageUtils.saveUser(user); //保存到local中
+                //     //跳转页面:首页
+                //     // this.props.history.replace('/');
+                //     this.props.history.replace('/home'); //为了解决redux保存headtitle，退出的时候会记录headtitle的值不变
+                // }else{//登陆失败
+                //     message.error(result.message);;
+                // }
+            } else {
                 console.log("校验失败！")
             }
         });
     };
-    
+
     //对密码进行自定义验证
     /*
         1、必须输入密码
         2、用户名至少4位最多12位
         3、用户名必须是英文字母或下划线组成
     */
-    validatePwd = (rule,value,callback)=>{
-        console.log('validatePwd',rule,value);
+    validatePwd = (rule, value, callback) => {
+        console.log('validatePwd', rule, value);
         // callback();  //验证通过
         // callback("xxxxxx");  //验证失败并给出提示信息
-        if(!value){
+        if (!value) {
             callback("必须输入密码");
-        }else if(value.length<4){
+        } else if (value.length < 4) {
             callback("密码长度不能小于4位");
-        }else if(value.length>12){
+        } else if (value.length > 12) {
             callback("密码长度不能大于12位");
-        }else if(!/^[a-zA-Z0-9_]+$/.test(value)){
+        } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
             callback("密码必须是英文字母、数字或下划线组成");
-        }else{
+        } else {
             callback();
         }
 
     }
-    render(){
+    render() {
 
         //如果用户已经登陆，自动跳转到管理界面
-        const user = memoryUtils.user;
-        // console.log('user123',user)
-        if(user && user._id){
-            // console.log('in here');
-            return <Redirect to='/' />  //跳转到根路径
+        // const user = memoryUtils.user;
+        const user = this.props.user; //redux管理用户数据
+        // console.log('user123', user);
+        if (user && user._id) {
+            console.log('in here');
+            return <Redirect to='/home' />  //跳转到根路径
         }
+
+        const errorMSG = this.props.user.errorMSG;
+
         //得到巨强大功能的form对象
         const { getFieldDecorator } = this.props.form;
-        return(
+        return (
             <div className="login">
                 <header className="login-header">
-                    <img src={logo} alt="icon"/>
+                    <img src={logo} alt="icon" />
                     <h1>React项目：后台管理系统</h1>
                 </header>
                 <section className="login-content">
+                    <div className={user.errorMSG ? 'error-msg show' : 'error-msg'}>{errorMSG}</div>
                     <h2>用户登录</h2>
                     <Form onSubmit={this.handleSubmit} className="login-form">
-                        <Form.Item>   
+                        <Form.Item>
                             {/*用户名规则
                                 1、必须输入用户名
                                 2、用户名至少4位最多12位
@@ -103,33 +120,33 @@ class Login extends Component{
                                 ],
                             })(
                                 <Input
-                                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                placeholder="用户名"
+                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    placeholder="用户名"
                                 />,
                             )}
-                        </Form.Item>   
-                        <Form.Item>   
+                        </Form.Item>
+                        <Form.Item>
                             {/*密码验证
                             对密码进行自定义验证
                             */}
                             {getFieldDecorator('password', {
                                 rules: [
                                     // { required: true, message: '必须输入密码!' }
-                                    { validator : this.validatePwd }
+                                    { validator: this.validatePwd }
                                 ],
                             })(
                                 <Input
-                                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                type="password"
-                                placeholder="密码"
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    type="password"
+                                    placeholder="密码"
                                 />,
                             )}
-                        </Form.Item>   
+                        </Form.Item>
                         <Form.Item>  {/*密码*/}
                             {getFieldDecorator('remember', {
-                                valuePropName:'checked',
+                                valuePropName: 'checked',
                                 initialValue: true,
-                            })(<Checkbox style={{color:'#fff',marginLeft:'90px',marginBottom:'20px'}}>记住密码</Checkbox>)}
+                            })(<Checkbox style={{ color: '#fff', marginLeft: '90px', marginBottom: '20px' }}>记住密码</Checkbox>)}
                             <a className="login-form-forgot" href="https://bilibili.com">
                                 忘记密码
                             </a>
@@ -145,7 +162,10 @@ class Login extends Component{
 }
 
 const WrappedLoginForm = Form.create()(Login);
-export default WrappedLoginForm;
+export default connect(
+    state => ({ user: state.user }),
+    { login }
+)(WrappedLoginForm);
 
 
 /*
@@ -160,7 +180,7 @@ async和await
 */
 
 
-/* 
+/*
 登陆验证包含两种方式：
 1、根据组件包含的规则rules来验证，比如本文件中对用户名的要求
 2、可自定义验证规则来验证，比如本文件中对密码的要求

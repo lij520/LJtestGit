@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Card, Button, Table, Modal, message } from 'antd';
 import { TranFormatDate } from '../../utils/dateUtils';
 import LinkButton from '../../components/linkButton/index';
-import {reqUserList,reqDeleteUser,reqAddUsers} from '../../api/index';
+import {reqUserList,reqDeleteUser,reqAddUsers,reqUpdateUsers} from '../../api/index';
 import AddUser from './adduser';
 
 const { confirm } = Modal;
@@ -18,6 +18,7 @@ export default class User extends Component {
             roles : [], //所有角色列表
             showVisibe : 0,
             loading: true,
+            user : {},
         }
     }
 
@@ -113,9 +114,10 @@ export default class User extends Component {
     //修改角色
     showEdit=(user)=>{
         console.log('here',user);
-        this.user = user;
+        // this.user = user;
         this.setState({
             showVisibe:1,
+            user : user,
         })
     }
     //添加或更新角色
@@ -150,9 +152,9 @@ export default class User extends Component {
         this.getUserList();
     }
     render() {
-        const { users ,showVisibe, loading, roles} = this.state;
-        const {user} = this;
-        const title = <Button type='primary' onClick={()=>{this.setState({showVisibe : 1})}}>创建用户</Button>
+        const { users ,showVisibe, loading, roles, user} = this.state;
+        // const {} = this;
+        const title = <Button type='primary' onClick={()=>{this.setState({showVisibe : 1,user:{}})}}>创建用户</Button>
         return (
             <div>
                 <Card title={title}>

@@ -10,7 +10,7 @@ import {
 } from 'antd';
 import LinkButton from '../../components/linkButton/index'
 import {reqCategories} from '../../api/index';
-
+import memoryUtils from '../../utils/memoryUtils';
 const Item = List.Item;
 
 export default class ProductDetail extends Component{
@@ -24,7 +24,8 @@ export default class ProductDetail extends Component{
     }
 
     async componentDidMount () {
-        const { pcategoryId , categoryId}=this.props.location.state.products;
+        // const { pcategoryId , categoryId}=this.props.location.state.products;
+        const { pcategoryId , categoryId}=memoryUtils.product
         if(pcategoryId==='0'){ //一级分类的商品
             const result = await reqCategories(categoryId);
             console.log('result',result)
@@ -43,8 +44,14 @@ export default class ProductDetail extends Component{
         }
     }
 
+    //在组件卸载之前清除保存数据
+    componentWillUnmount(){
+        memoryUtils.product = {}
+    }
+
     render(){
-        const {name, price, desc, detail ,imgs } = this.props.location.state.products;
+        // const {name, price, desc, detail ,imgs } = this.props.location.state.products;
+        const {name, price, desc, detail ,imgs } = memoryUtils.product
         const {cPname , cName} =this.state;
         const title=(
             <span>

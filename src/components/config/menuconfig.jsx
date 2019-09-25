@@ -48,6 +48,10 @@ const menuList=[
                 icon : 'pie-chart',
             }
         ]
+    },{
+        title : 'Redux测试',
+        key : '/redux',
+        icon : 'box-plot',
     }
 ]
 
